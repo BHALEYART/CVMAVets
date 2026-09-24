@@ -1,0 +1,8 @@
+{
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/veterans-organizaions", "destination": "/veterans-organizations/", "permanent": true },
+    { "source": "/bylaws,-policies,-&-sops", "destination": "/bylaws-policies-sops/", "permanent": true },
+    { "source": "/about-us", "destination": "/cvma-chapter-35-3/", "permanent": true }
+  ]
+}
