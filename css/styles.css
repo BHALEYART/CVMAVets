@@ -567,3 +567,16 @@ a:hover .link-arrow::after, .link-arrow:hover::after { transform: translateX(4px
   .btn { white-space: normal; text-align: center; }
 }
 .person__img--empty > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; }
+
+/* Facebook feed (Page Plugin) */
+.feed-split { display: grid; grid-template-columns: 1fr minmax(280px, 500px); gap: clamp(32px, 6vw, 72px); align-items: center; }
+.feed-split--top { align-items: start; }
+.feed-split__text { color: #d9d4ca; margin: 0 0 24px; max-width: 460px; }
+.fb-feed { width: 100%; max-width: 500px; background: var(--paper); border-top: 6px solid var(--gold); min-height: 200px; position: relative; }
+.fb-feed iframe { display: block; width: 100%; border: 0; overflow: hidden; }
+.fb-feed__fallback { display: flex; align-items: center; justify-content: center; min-height: 200px; padding: 24px; text-align: center; font-family: var(--font-head); text-transform: uppercase; letter-spacing: .08em; text-decoration: none; color: var(--ink); }
+.fb-feed.is-loaded .fb-feed__fallback { min-height: 0; padding: 12px; font-size: 13px; border-top: 1px solid var(--line); }
+@media (max-width: 900px) {
+  .feed-split { grid-template-columns: 1fr; }
+  .fb-feed { margin: 0 auto; }
+}
