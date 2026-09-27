@@ -120,3 +120,33 @@
     if (e.key === 'ArrowRight') show(i + 1);
   });
 })();
+
+// Facebook Page Plugin: recent posts in any element with [data-fb-feed].
+// Page URL comes from SITE.facebook in js/site-nav.js. If Facebook is blocked, the fallback link stays.
+(() => {
+  const boxes = document.querySelectorAll('[data-fb-feed]');
+  if (!boxes.length || typeof SITE === 'undefined' || !SITE.facebook) return;
+  const build = (box) => {
+    const w = Math.max(180, Math.min(500, Math.floor(box.clientWidth)));   // plugin supports 180–500px
+    if (box.dataset.w == w) return;
+    box.dataset.w = w;
+    const h = box.dataset.height || 600;
+    const src = 'https://www.facebook.com/plugins/page.php?' + new URLSearchParams({
+      href: SITE.facebook, tabs: 'timeline', width: w, height: h,
+      small_header: 'true', adapt_container_width: 'true', hide_cover: 'false', show_facepile: 'false',
+    });
+    let f = box.querySelector('iframe');
+    if (!f) {
+      f = document.createElement('iframe');
+      f.title = 'Latest Facebook posts';
+      f.loading = 'lazy';
+      f.setAttribute('scrolling', 'no');
+      f.allow = 'encrypted-media; clipboard-write; web-share';
+      f.addEventListener('load', () => box.classList.add('is-loaded'));
+      box.prepend(f);
+    }
+    f.width = w; f.height = h; f.src = src;
+  };
+  boxes.forEach(build);
+  let t; window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => boxes.forEach(build), 300); });
+})();
