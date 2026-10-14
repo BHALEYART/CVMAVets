@@ -581,3 +581,9 @@ a:hover .link-arrow::after, .link-arrow:hover::after { transform: translateX(4px
   .fb-feed { margin: 0 auto; }
 }
 .hero__media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+/* Second countdown band (dark), e.g. chapter events under the National Meeting */
+.countdown--dark { background: var(--ink); color: #fff; border-top: 4px solid var(--gold); }
+.countdown--dark .eyebrow { color: var(--gold); }
+.countdown--dark .countdown__place { color: var(--gold); }
+.countdown--dark p { color: #d9d4ca; }
+.countdown--dark .timer__unit { background: var(--charcoal); }
