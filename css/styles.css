@@ -580,3 +580,4 @@ a:hover .link-arrow::after, .link-arrow:hover::after { transform: translateX(4px
   .feed-split { grid-template-columns: 1fr; }
   .fb-feed { margin: 0 auto; }
 }
+.hero__media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
