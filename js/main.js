@@ -50,8 +50,9 @@
   mobile.addEventListener('change', () => { if (!mobile.matches && nav.classList.contains('open')) toggle.click(); });
 
   // Countdown — set data-target on .countdown to an ISO date, e.g. "2027-06-10T09:00:00-05:00"
-  const cd = document.querySelector('.countdown[data-target]');
-  if (cd && cd.querySelector('.timer')) {
+  // Every .countdown with a data-target gets its own timer (pages can have more than one).
+  document.querySelectorAll('.countdown[data-target]').forEach((cd) => {
+    if (!cd.querySelector('.timer')) return;
     const timer = cd.querySelector('.timer');
     const target = Date.parse(cd.dataset.target || '');
     const el = (k) => timer.querySelector(`[data-${k}]`);
@@ -69,7 +70,7 @@
       };
       tick(); setInterval(tick, 1000);
     }
-  }
+  });
 
   const y = document.querySelector('[data-year]');
   if (y) y.textContent = new Date().getFullYear();
